@@ -1,0 +1,65 @@
+<canvas id="tela" width="600" height="400" style="border:1px solid black;"></canvas>
+
+<script>
+
+var tela = document.getElementById("tela");
+var c = tela.getContext("2d");
+
+var alvoX;
+var alvoY;
+var raioAlvo = 40;
+var pontos = 0;
+
+
+var limpa = function() {
+    c.clearRect(0, 0, 600, 400);
+};
+
+var sorteia = function(n) {
+    return Math.floor(Math.random() * n);
+};
+
+var circulo = function(x, y, raio, cor) {
+    c.beginPath();
+    c.arc(x, y, raio, 0, 2 * Math.PI);
+    c.fillStyle = cor;
+    c.fill();
+};
+
+var text = function(x, y, mensagem) {
+    c.font = "20px Arial";
+    c.fillStyle = "black";
+    c.fillText(mensagem, x, y);
+};
+
+var desenhaAlvo = function(x, y) {
+    circulo(x, y, 40, "white");
+    circulo(x, y, 30, "red");
+    circulo(x, y, 20, "white");
+    circulo(x, y, 10, "red");
+};
+
+var desenha = function() {
+    limpa();
+    alvoX = sorteia(560) + 20;
+    alvoY = sorteia(360) + 20;
+    desenhaAlvo(alvoX, alvoY);
+    text(10, 30, "Pontuação: " + pontos);
+};
+
+tela.onclick = function(event) {
+    var rect = tela.getBoundingClientRect();
+    var cliqueX = event.clientX - rect.left;
+    var cliqueY = event.clientY - rect.top;
+
+    var dx = cliqueX - alvoX;
+    var dy = cliqueY - alvoY;
+    var distancia = Math.sqrt(dx*dx + dy*dy);
+
+    if (distancia <= raioAlvo) {
+        pontos += 1;
+    }
+};
+
+setInterval(desenha, 1000); 
+</script>

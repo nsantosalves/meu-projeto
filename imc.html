@@ -1,0 +1,32 @@
+<script>
+var pulaLinha = function () {
+		document.write("<br>");
+};
+var mostra = function(frase) {
+		document.write(frase);
+		pulaLinha();
+};
+var calculaIMC =  function(altura, peso) {
+		var imc = peso / (altura * altura);
+		return imc;
+};
+var alturaDoUsuario = parseFloat(prompt("Qual sua altura?"));
+
+var pesoDoUsuario = parseFloat(prompt("Qual o seu peso?"));
+
+var imcDoUsuario = calculaIMC(alturaDoUsuario, pesoDoUsuario);
+		document.write("O seu IMC e: " + imcDoUsuario . toFixed(1) + "<br>");
+		
+if (imcDoUsuario < 18.5) {
+		document.write("Seu IMC indica que voce esta abaixo do peso");
+};
+
+if (imcDoUsuario > 35) {
+		document.write("Seu IMC indica que voce esta acima do peso");
+}
+
+if (imcDoUsuario >= 18.5 && imcDoUsuario <= 35) {
+		document.write("Voce esta no peso ideal!");
+}
+
+</script>

@@ -1,0 +1,44 @@
+<canvas id="tela" width="600" height="400"></canvas>
+<script>
+
+var tela = document.getElementById("tela");
+var c = tela.getContext("2d");
+
+c.fillStyle="gray";
+c.fillRect(0, 0, 600, 40);
+
+var desenha = false;
+
+tela.onmousedown = function () {
+	desenha = true;
+}
+
+tela.onmouseup = function () {
+	desenha = false;
+}
+
+tela.onmousemove = function(evento) {
+	
+	if (desenha) {
+	var x = evento.pageX - tela.offsetLeft;
+    var y = evento.pageY - tela.offsetTop;
+    
+    if (evento.buttons === 1) {
+        c.fillStyle = "blue"; 
+    } else if (evento.buttons === 2) {
+        c.fillStyle = "red";  
+    }
+    
+    c.beginPath();
+    c.arc(x, y, 10, 0, 2 * Math.PI);
+	
+    c.fill();
+}
+
+};
+
+tela.oncontextmenu = function(evento) {
+    evento.preventDefault();
+};
+
+</script>

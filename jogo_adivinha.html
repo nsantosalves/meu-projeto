@@ -1,0 +1,36 @@
+<script>
+
+var pulaLinha = function () {
+ document.write("<br>");
+}; 
+
+var mostra = function(frase) {
+	document.write(frase);
+    pulaLinha();
+};
+
+ function sorteia(n) {
+        return Math.round(Math.random() * n);
+};
+
+var numeroPensado = sorteia(10);
+
+var chute = parseInt(prompt("Ja pensei. Qual voce acha que e?"));
+		
+if (isNaN(chute)) {
+    mostra("Por favor, digite apenas números." + "<br>" + "Você perdeu essa chance!");
+	
+} else {
+
+    if (chute < numeroPensado) {
+        mostra("Você errou! O número que chutou é menor do que o número que pensei.");
+		
+    } else if (chute > numeroPensado) {
+        mostra("Você errou! O número que chutou é maior do que o número que pensei.");
+		
+    } else {
+        mostra("Parabéns! Você acertou em cheio, eu pensei exatamente no número " + numeroPensado);
+    }
+}
+
+</script> 

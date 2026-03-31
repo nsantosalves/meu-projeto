@@ -1,0 +1,23 @@
+<canvas id="tela" width="600" height="400"></canvas>
+<script>
+
+var tela = document.getElementById("tela");
+var c = tela.getContext("2d");
+
+var imagem = new Image();
+imagem.src = "/home/nayara/Documentos/Notepad++/flor.webp";
+
+var desenhaImagem = function(x, y) {
+	c.drawImage(imagem, x, y);
+};
+
+var x = 1;
+
+var desenha = function() {
+	c.clearRect(0, 0, 600, 400);
+	desenhaImagem(x, x, 10);
+	x = x + 1;
+};
+
+setInterval(desenha, 30);
+</script>
