@@ -1,0 +1,44 @@
+  <input type="text" id="tituloLivro" placeholder="Digite o título do livro">
+  <button onclick="buscarLivro()">Buscar</button>
+
+  <p id="resultado"></p>
+
+<script>
+    var livros = [
+      { getTitulo: () => "Harry Potter", getEstante: () => "Estante 1" },
+      { getTitulo: () => "Dom Casmurro", getEstante: () => "Estante 3" },
+      { getTitulo: () => "O Senhor dos Anéis", getEstante: () => "Estante 2" },
+      { getTitulo: () => "O Alquimista", getEstante: () => "Estante 4" }
+    ];
+
+    var estantes = new Map();
+    for (var livro of livros) {
+      estantes.set(livro.getTitulo(), livro.getEstante());
+    }
+
+    function getLocalizacaoDoLivro(tituloDoLivro) {
+      var estante = estantes.get(tituloDoLivro);
+      if (estante === undefined) {
+        return null; 
+      }
+      return estante;
+    }
+	
+    function buscarLivro() {
+      var titulo = document.getElementById("tituloLivro").value.trim();
+      var resultado = document.getElementById("resultado");
+
+      if (titulo === "") {
+        resultado.textContent = "Por favor, digite um título!";
+        return;
+      }
+
+      var estante = getLocalizacaoDoLivro(titulo);
+
+      if (estante) {
+        resultado.textContent = `Livro encontrado! "${titulo}" está na ${estante}.`;
+      } else {
+        resultado.textContent = `Livro "${titulo}" não encontrado no acervo!`;
+      }
+    }
+  </script>

@@ -1,0 +1,19 @@
+<script>
+
+const usuario = {
+  login: "meu Login",
+  senha: "123456"
+};
+
+const proxy = new Proxy(usuario, {
+	get(alvo, propriedade) {
+		console.log(`${propriedade} foi solicitada!`);
+		
+		return alvo[propriedade];
+	}
+});
+
+console.log(proxy.login);
+console.log(proxy.senha);
+
+</script>

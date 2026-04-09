@@ -1,0 +1,35 @@
+<script>
+
+function Set(valores) {
+	var array = [ ];
+	
+	this.add = function(valor) {
+		if(array.indexOf(valor) === -1) {
+			array.push(valor);
+		}
+	}
+	
+	this.mostraValores = function( ) {
+		console.log(array);
+	}
+	
+	if (valores) {
+    for (var v of valores) {
+      this.add(v);
+    }
+  }
+
+  this[Symbol.iterator] = function* () {
+    for (var valor of array) {
+      yield valor;
+    }
+  }
+}
+
+var set = new Set([2, 1, 2]);
+
+for (const valor of set) {
+		console.log(valor);
+}
+
+</script>

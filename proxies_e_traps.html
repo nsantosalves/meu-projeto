@@ -1,0 +1,21 @@
+<script>
+
+const validador = {
+	set(alvo, propriedade, valor) {
+		if(propriedade === 'idade') {
+			if (!Number.isInteger(valor)) {
+				throw new TypeError('A idade nao e um numero!');
+			}
+		}
+		alvo[propriedade] = valor;
+		return true;
+	}
+}
+
+const usuario = new Proxy({}, validador);
+
+usuario.idade = 10; 
+
+console.log(usuario.idade);
+
+</script>

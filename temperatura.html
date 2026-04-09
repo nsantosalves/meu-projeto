@@ -1,0 +1,19 @@
+<script>
+
+function recuperaDadosDaApi() {
+    return {
+        temperatura: 24,
+        maxima: 32,
+        minima: 20
+    };
+}
+
+const { temperatura } = recuperaDadosDaApi();
+console.log(temperatura); 
+
+const { temperatura: temp, maxima, minima } = recuperaDadosDaApi();
+console.log(temp);    
+console.log(maxima);  
+console.log(minima);  
+
+</script>
